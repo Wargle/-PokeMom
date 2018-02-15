@@ -1,0 +1,40 @@
+<resources xmlns:xliff="http://schemas.android.com/tools">
+    <string name="app_name">PokeMom</string>
+
+    <string name="sliding_title">Titre</string>
+    <string name="sliding_header_text">Text. Text ? Text !</string>
+    <string name="sliding_menu_sub">Additionnel</string>
+    <string name="sliding_menuB_meteo">Météo</string>
+    <string name="sliding_menuB_alarme">Réveil</string>
+    <string name="sliding_menuB_dress">Dressing</string>
+    <string name="sliding_menuB_diet">Régime</string>
+    <string name="sliding_menuB_best">La meilleur fonction</string>
+
+    <string name="toast_meteo">Pense à te couvrir.</string>
+    <string name="toast_alarme">À quelle heure ?</string>
+    <string name="toast_dress">Tu sors comme ça ?</string>
+    <string name="toast_food">On mange !!</string>
+    <string name="toast_best">Bien, bien.</string>
+    <string name="toast_smth_wrong">Quelquechose ne va pas !</string>
+
+    <string name="text_send">Envoyer</string>
+
+    <string name="mainMenuItemSpeak">Parle !</string>
+    <string name="mainMenuItemStop">Ne parle plus !</string>
+    <string name="buttonClear">Nettoyer</string>
+    <string name="rB_fr">Français</string>
+    <string name="rB_ger">Allemand</string>
+    <string name="rB_uk">Anglais</string>
+    <string name="rB_it">Italien</string>
+    <string name="rB_jap">Japonais</string>
+    <string name="rB_chi">Chinois</string>
+    <string name="toast_speak">Oui Maitre !</string>
+    <string name="toast_stop">Pardon Maitre !</string>
+
+    <string name="text_what">Je recherche </string>
+    <string name="rb_what_recette">une recette</string>
+    <string name="rb_what_ingredient">un ingredient</string>
+    <string name="rb_what_aide">de l\'aide</string>
+    <string name="text_name">Nom :</string>
+    <string name="text_b_search">Rechercher</string>
+</resources>

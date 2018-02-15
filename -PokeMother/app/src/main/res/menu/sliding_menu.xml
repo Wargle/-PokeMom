@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_meteo"
+            android:checked="false"
+            android:title="@string/sliding_menuB_meteo"
+            android:icon="@drawable/ic_menu_meteo"/>
+        <item
+            android:id="@+id/nav_alarme"
+            android:checked="false"
+            android:title="@string/sliding_menuB_alarme"
+            android:icon="@drawable/ic_menu_alarme" />
+        <item
+            android:id="@+id/nav_dress"
+            android:checked="false"
+            android:title="@string/sliding_menuB_dress"
+            android:icon="@drawable/ic_menu_gallery"/>
+        <item
+            android:id="@+id/nav_diet"
+            android:checked="false"
+            android:title="@string/sliding_menuB_diet"
+            android:icon="@drawable/ic_menu_diet"/>
+
+        <item android:title="@string/sliding_menu_sub">
+            <menu>
+                <item
+                    android:id="@+id/nav_best"
+                    android:icon="@drawable/ic_menu_send"
+                    android:title="@string/sliding_menuB_best" />
+            </menu>
+        </item>
+    </group>
+</menu>
