@@ -8,4 +8,5 @@
     <item name="ic_menu_alarme" type="drawable">@drawable/ic_access_alarm_black_24dp</item>
     <item name="ic_menu_meteo" type="drawable">@drawable/ic_cloud_black_24dp</item>
     <item name="ic_menu_diet" type="drawable">@drawable/ic_restaurant_menu_black_24dp</item>
+    <item name="ic_add" type="drawable">@drawable/ic_add_white_24dp</item>
 </resources>

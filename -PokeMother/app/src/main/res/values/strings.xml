@@ -37,4 +37,21 @@
     <string name="rb_what_aide">de l\'aide</string>
     <string name="text_name">Nom :</string>
     <string name="text_b_search">Rechercher</string>
+
+    <string name="notif_title_wakeUp">Quand je me lève !</string>
+    <string name="notif_content_wakeUp">Appuie et je m\'arrête</string>
+    <string name="alarm_text_set">Tu sonneras !</string>
+    <string name="alarm_text_stop">Arrête toi !</string>
+    <string name="alarm_text_mess">Aucune alarme</string>
+    <string name="bSuppr">X</string>
+    <string name="text_select_date">Date</string>
+    <string name="text_select_time">Heure</string>
+    <string name="text_diff">Difficulté :</string>
+
+    <string-array name="cb_diet">
+        <item>Très facile</item>
+        <item>Facile</item>
+        <item>Niveau moyen</item>
+        <item>Difficile</item>
+    </string-array>
 </resources>

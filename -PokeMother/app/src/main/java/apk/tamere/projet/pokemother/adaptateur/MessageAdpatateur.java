@@ -15,12 +15,12 @@ import apk.tamere.projet.pokemother.metier.Message;
 /**
  * Created by Alexis Arnould on 09/02/2018.
  */
-public class MyRecyclerAdpatateur extends RecyclerView.Adapter<MyRecyclerAdpatateur.ViewHolder> {
+/*public class MessageAdpatateur extends RecyclerView.Adapter<MessageAdpatateur.ViewHolder> {
 
     private List<Message> data;
     private int selectedItem = 0;
 
-    public MyRecyclerAdpatateur(List<Message> myData) {
+    public MessageAdpatateur(List<Message> myData) {
         data = myData;
     }
 
@@ -43,14 +43,14 @@ public class MyRecyclerAdpatateur extends RecyclerView.Adapter<MyRecyclerAdpatat
     }
 
     @Override
-    public MyRecyclerAdpatateur.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_recyclerview, parent, false);
+    public MessageAdpatateur.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_message, parent, false);
 
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(MyRecyclerAdpatateur.ViewHolder holder, int position) {
+    public void onBindViewHolder(MessageAdpatateur.ViewHolder holder, int position) {
         Message current = data.get(position);
         if(current.isMom()) {
             holder.right.setVisibility(LinearLayout.GONE);
@@ -69,6 +69,48 @@ public class MyRecyclerAdpatateur extends RecyclerView.Adapter<MyRecyclerAdpatat
         public LinearLayout left, right;
 
         private ViewHolder(View v) {
+            super(v);
+
+            left = v.findViewById(R.id.cell_left);
+            right = v.findViewById(R.id.cell_right);
+            leftT = v.findViewById(R.id.cell_left_text);
+            rightT = v.findViewById(R.id.cell_right_text);
+        }
+    }
+}*/
+public class MessageAdpatateur extends AbstractAdaptateur<Message> {
+
+    public MessageAdpatateur(List<Message> myData) { super(myData); }
+
+    @Override
+    public MessageAdpatateur.MessageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_message, parent, false);
+
+        return new MessageViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(AbstractAdaptateur.ViewHolder holder, int position) {
+        MessageViewHolder mHolder = (MessageViewHolder) holder;
+        Message current = data.get(position);
+        if (current.isMom()) {
+            mHolder.right.setVisibility(LinearLayout.GONE);
+            mHolder.leftT.setText(data.get(position).getMessage());
+        } else {
+            mHolder.left.setVisibility(LinearLayout.GONE);
+            mHolder.rightT.setText(data.get(position).getMessage());
+        }
+
+        holder.itemView.setSelected(selectedItem == position);
+    }
+
+
+    public class MessageViewHolder extends AbstractAdaptateur.ViewHolder {
+
+        private TextView leftT, rightT;
+        public LinearLayout left, right;
+
+        private MessageViewHolder(View v) {
             super(v);
 
             left = v.findViewById(R.id.cell_left);

@@ -23,14 +23,17 @@
         android:layout_width="wrap_content"
         android:layout_toRightOf="@+id/textWhat">
         <RadioButton
+            android:id="@+id/rgWhatR"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/rb_what_recette"/>
         <RadioButton
+            android:id="@+id/rgWhatI"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/rb_what_ingredient"/>
         <RadioButton
+            android:id="@+id/rgWhatA"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/rb_what_aide"/>
@@ -59,4 +62,23 @@
         android:layout_width="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/textDiff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textName"
+        android:layout_alignStart="@+id/textName"
+        android:layout_below="@+id/textName"
+        android:text="@string/text_diff"
+        android:layout_marginTop="15dp"/>
+
+    <Spinner
+        android:id="@+id/cb_difficulty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textDiff"
+        android:layout_toEndOf="@+id/textDiff"
+        android:layout_toRightOf="@+id/textDiff"
+        android:layout_marginLeft="15dp"/>
 </RelativeLayout>

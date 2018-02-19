@@ -1,7 +1,9 @@
 package apk.tamere.projet.pokemother.activity;
 
+import android.Manifest;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -17,7 +19,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import apk.tamere.projet.pokemother.R;
-import apk.tamere.projet.pokemother.adaptateur.MyRecyclerAdpatateur;
+import apk.tamere.projet.pokemother.adaptateur.MessageAdpatateur;
 import apk.tamere.projet.pokemother.metier.Conversation;
 import apk.tamere.projet.pokemother.metier.Message;
 
@@ -26,7 +28,7 @@ import apk.tamere.projet.pokemother.metier.Message;
  */
 public class MainActivity extends AppCompatActivity {
 
-    private MyRecyclerAdpatateur adapter;
+    private MessageAdpatateur adapter;
     private RecyclerView conv;
 
     private Conversation mess;
@@ -35,21 +37,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /*if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
             }
             else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
             }
-        }*/
+        }
 
         setContentView(R.layout.activity_main);
         conv = findViewById(R.id.conver);
 
-        Conversation model = ViewModelProviders.of(this).get(Conversation.class);
+        mess = ViewModelProviders.of(this).get(Conversation.class);
 
-        adapter = new MyRecyclerAdpatateur(model.getMessages().getValue());
+        adapter = new MessageAdpatateur(mess.getMessages().getValue());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
         conv.setLayoutManager(layoutManager);
         conv.setAdapter(adapter);
@@ -68,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.nav_alarme:
                         Toast.makeText(getApplicationContext(), R.string.toast_alarme, Toast.LENGTH_SHORT).show();
+
+                        Intent intentAlarm = new Intent(getApplicationContext(), AlarmActivity.class);
+                        startActivity(intentAlarm);
                         return true;
                     case R.id.nav_dress:
                         Toast.makeText(getApplicationContext(), R.string.toast_dress, Toast.LENGTH_SHORT).show();
@@ -102,22 +107,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-    }
-
-    @Override
     protected void onDestroy() {
+        mess.saveMessages(Conversation.FILE_SAVE_NAME);
+
         super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        mess.saveMessages(Conversation.FILE_SAVE_NAME);
+
+        super.onStop();
     }
 }

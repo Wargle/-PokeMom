@@ -13,20 +13,28 @@ import java.util.List;
 
 public class Conversation extends ViewModel {
     private MutableLiveData<List<Message>> messages;
+    private ISaveLoad<Message> io;
 
-    public Conversation() {}
+    public static final String FILE_SAVE_NAME = "momConv.json";
+
+    public Conversation() {
+        io = new SaveLoadMessageJSon();
+    }
 
     public LiveData<List<Message>> getMessages() {
         if (messages == null) {
             messages = new MutableLiveData<>();
             messages.setValue(new ArrayList<Message>());
-            loadMessages();
+            loadMessages(FILE_SAVE_NAME);
         }
         return messages;
     }
 
-    private void loadMessages() {
-        messages.getValue().add(new Message("1"));
-        messages.getValue().add(new Message("2"));
+    public void saveMessages(String path) {
+        io.save(path, messages.getValue());
+    }
+
+    private void loadMessages(String path) {
+        messages.getValue().addAll(io.load(path));
     }
 }

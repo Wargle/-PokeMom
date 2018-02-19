@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AlarmAddActivity"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/in_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/btn_date"
+        android:layout_toStartOf="@+id/btn_date"
+        android:inputType="date" />
+
+    <Button
+        android:id="@+id/btn_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/text_select_date" />
+
+    <EditText
+        android:id="@+id/in_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btn_time"
+        android:layout_toLeftOf="@+id/btn_time"
+        android:layout_toStartOf="@+id/btn_time"
+        android:inputType="time" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_select_time"
+        android:id="@+id/btn_time"
+        android:layout_below="@+id/btn_date"
+        android:layout_alignLeft="@+id/btn_date"
+        android:layout_alignStart="@+id/btn_date" />
+
+    <Button
+        android:id="@+id/start_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/alarm_clock_margin"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/alarm_text_set" />
+
+</RelativeLayout>

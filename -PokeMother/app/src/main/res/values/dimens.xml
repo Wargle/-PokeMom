@@ -12,5 +12,6 @@
     <dimen name="recycler_cell_textSize">20sp</dimen>
     <dimen name="recycler_minWidth">200dp</dimen>
     <dimen name="text_margin">20dp</dimen>
+    <dimen name="alarm_clock_margin">8dp</dimen>
 
 </resources>

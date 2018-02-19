@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="1dp"
+    android:layout_margin="10dp">
+
+    <Button
+        android:id="@+id/b_supprAlarm"
+        style="@android:style/Widget.DeviceDefault.Light.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bSuppr" />
+
+    <TextView
+        android:id="@+id/alarm_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/b_supprAlarm"
+        android:layout_toRightOf="@+id/b_supprAlarm"
+        android:minWidth="200dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/alarm_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/alarm_time"
+        android:layout_toEndOf="@+id/b_supprAlarm"
+        android:layout_toRightOf="@+id/b_supprAlarm"
+        android:minWidth="200dp"
+        android:textColor="@color/colorGray"
+        android:textSize="12sp" />
+
+    <ToggleButton
+        android:id="@+id/tB_ring"
+        style="@style/Widget.AppCompat.DrawerArrowToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true" />
+
+</RelativeLayout>
