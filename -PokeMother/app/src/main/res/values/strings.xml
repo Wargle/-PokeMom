@@ -42,16 +42,25 @@
     <string name="notif_content_wakeUp">Appuie et je m\'arrête</string>
     <string name="alarm_text_set">Tu sonneras !</string>
     <string name="alarm_text_stop">Arrête toi !</string>
-    <string name="alarm_text_mess">Aucune alarme</string>
+    <string name="alarm_text_mess">Selectionner</string>
+    <string name="alarm_text_hint">appuyez...</string>
     <string name="bSuppr">X</string>
     <string name="text_select_date">Date</string>
     <string name="text_select_time">Heure</string>
     <string name="text_diff">Difficulté :</string>
+    <string name="momHello">Bonjour ! &lt;3</string>
 
     <string-array name="cb_diet">
         <item>Très facile</item>
         <item>Facile</item>
         <item>Niveau moyen</item>
         <item>Difficile</item>
+    </string-array>
+
+    <string-array name="mom_pool">
+        <item>Tu penses jamais à moi >:(</item>
+        <item>Tu m\'apelles jamais :\'(</item>
+        <item>D\'accord !</item>
+        <item>On voit ça demain</item>
     </string-array>
 </resources>

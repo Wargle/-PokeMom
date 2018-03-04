@@ -16,7 +16,7 @@ public class Alarm implements Serializable {
 
     public Alarm(int day, int month, int year, int hour, int min, boolean isActive) {
         this.day = day;
-        this.month = month;
+        this.month = month + 1;
         this.year = year;
         this.hour = hour;
         this.min = min;
@@ -56,6 +56,6 @@ public class Alarm implements Serializable {
     }
 
     public String getDate() {
-        return day + "/" + month + "/" + year;
+        return String.format("%02d",  day) + "/" + String.format("%02d",  month) + "/" + year;
     }
 }

@@ -4,21 +4,38 @@
     android:layout_height="wrap_content"
     android:padding="1dp">
 
-    <LinearLayout
+
+    <RelativeLayout
         android:id="@+id/cell_left"
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:background="@drawable/shape_mom">
+        android:layout_gravity="start">
+
+        <TextView
+            android:id="@+id/textCircleM"
+            android:text=" M "
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_circle"
+             />
 
         <TextView
             android:id="@+id/cell_left_text"
+            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_toEndOf="@+id/textCircleM"
+            android:layout_toRightOf="@+id/textCircleM"
+            android:background="@drawable/shape_mom" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/cell_right"
@@ -30,6 +47,7 @@
 
         <TextView
             android:id="@+id/cell_right_text"
+            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"/>

@@ -2,6 +2,7 @@ package apk.tamere.projet.pokemother.activity;
 
 import android.Manifest;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -14,9 +15,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 import apk.tamere.projet.pokemother.R;
 import apk.tamere.projet.pokemother.adaptateur.MessageAdpatateur;
@@ -33,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Conversation mess;
 
+    private List<String> momPool;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_main);
+
+        momPool = Arrays.asList(getResources().getStringArray(R.array.mom_pool));
+
         conv = findViewById(R.id.conver);
 
         mess = ViewModelProviders.of(this).get(Conversation.class);
@@ -55,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
         conv.setLayoutManager(layoutManager);
         conv.setAdapter(adapter);
+
+        adapter.add(new Message(getString(R.string.momHello), true));
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -100,7 +113,19 @@ public class MainActivity extends AppCompatActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                adapter.add(new Message(((EditText) findViewById(R.id.textSend)).getText().toString(), false));
+                EditText send = findViewById(R.id.textSend);
+                String mess = send.getText().toString();
+                if(mess.equals(""))
+                    return;
+                View view = getCurrentFocus();
+                if (view != null) {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
+
+                adapter.add(new Message(mess, false));
+                int index = new Random().nextInt(momPool.size());
+                adapter.add(new Message(momPool.get(index), true));
                 conv.scrollToPosition(0);
             }
         });
