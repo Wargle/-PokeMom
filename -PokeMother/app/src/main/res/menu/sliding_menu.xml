@@ -2,6 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_contact"
+            android:checked="false"
+            android:title="@string/sliding_menuB_contact"
+            android:icon="@drawable/ic_account"/>
+
+        <item
             android:id="@+id/nav_meteo"
             android:checked="false"
             android:title="@string/sliding_menuB_meteo"
@@ -11,11 +17,6 @@
             android:checked="false"
             android:title="@string/sliding_menuB_alarme"
             android:icon="@drawable/ic_menu_alarme" />
-        <item
-            android:id="@+id/nav_dress"
-            android:checked="false"
-            android:title="@string/sliding_menuB_dress"
-            android:icon="@drawable/ic_menu_gallery"/>
         <item
             android:id="@+id/nav_diet"
             android:checked="false"

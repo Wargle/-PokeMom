@@ -28,7 +28,7 @@ public abstract class AbstractAdaptateur<T> extends RecyclerView.Adapter<Abstrac
         if(!data.contains(item))
         {
             data.add(pos, item);
-            notifyItemInserted(data.lastIndexOf(item));
+            notifyItemInserted(pos);
         }
     }
 
@@ -54,10 +54,6 @@ public abstract class AbstractAdaptateur<T> extends RecyclerView.Adapter<Abstrac
         protected ViewHolder(View v) {
             super(v);
         }
-    }
-
-    public interface CallBack {
-        void onItemClicked(int position);
     }
 }
 

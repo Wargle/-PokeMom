@@ -8,14 +8,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import apk.tamere.projet.pokemother.R;
 import apk.tamere.projet.pokemother.alarm.AlarmReceiver;
@@ -26,29 +30,27 @@ public class AlarmAddActivity extends AppCompatActivity implements View.OnClickL
     private AlarmManager alarmManager;
     private PendingIntent pending_intent;
 
-    public final static String ACTION = "action", ACTION_LAUNCH = "launch", ACTION_STOP = "stop", GET_NEW = "newAlarm";
-    //private final String ALARM_CLOCK_H = "alarm_clock_h", ALARM_CLOCK_M = "alarm_clock_m";
+    public final static String ACTION = "action", ACTION_LAUNCH = "launch", ACTION_STOP = "stop", GET_NEW = "newAlarm", SAVE_REPEATS = "repeatsDays";
 
-    /*Button buttonSetAlarm, btnTimePicker*/;
-    TextView newDateHour, newDateDay;
+    private TextView newDateHour, newDateDay;
+
     private int mYear, mMonth, mDay, mHour, mMinute;
     private boolean isOkDate, isOkTime;
+
+    private ArrayList<Integer> repeats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_alarm);
 
+        repeats = new ArrayList<>();
+
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
-        //buttonSetAlarm = findViewById(R.id.buttonSetAlarm);
-        //btnTimePicker = findViewById(R.id.btn_time);
-        //txtDate = findViewById(R.id.in_date);
-        //txtTime = findViewById(R.id.in_time);
         newDateDay = findViewById(R.id.newDateDay);
         newDateHour = findViewById(R.id.newDateHour);
 
-        //btnDatePicker.setOnClickListener(this);
         newDateHour.setOnClickListener(this);
         newDateDay.setOnClickListener(this);
 
@@ -61,6 +63,7 @@ public class AlarmAddActivity extends AppCompatActivity implements View.OnClickL
             public void onClick(View v) {
                 if(isOkDate && isOkTime) {
                     Alarm alarm = new Alarm(mDay, mMonth, mYear, mHour, mMinute, true);
+                    alarm.setRepeats(repeats);
 
                     calendar.set(mYear, mMonth, mDay, mHour, mMinute);
                     calendar.set(Calendar.SECOND, 0);
@@ -80,6 +83,20 @@ public class AlarmAddActivity extends AppCompatActivity implements View.OnClickL
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putIntegerArrayList(SAVE_REPEATS, repeats);
+
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        repeats = savedInstanceState.getIntegerArrayList(SAVE_REPEATS);
+    }
+
+    @Override
     public void onClick(View v) {
         final Context context = this;
         final Calendar c = Calendar.getInstance();
@@ -93,13 +110,13 @@ public class AlarmAddActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 monthOfYear += 1;
-                newDateHour.setText(dayOfMonth + "/" + monthOfYear + "/" + year);
+                newDateDay.setText(dayOfMonth + "/" + monthOfYear + "/" + year);
                 isOkDate = true;
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        newDateDay.setText(hourOfDay + ":" + String.format("%02d",  minute));
+                        newDateHour.setText(hourOfDay + ":" + String.format("%02d",  minute));
                         isOkTime = true;
                     }
                 }, mHour, mMinute, true);
@@ -108,5 +125,61 @@ public class AlarmAddActivity extends AppCompatActivity implements View.OnClickL
             }
         }, mYear, mMonth, mDay);
         datePickerDialog.show();
+    }
+
+    public void onCheckboxClicked(View view) {
+        boolean checked = ((CheckBox) view).isChecked();
+
+        switch(view.getId()) {
+            case R.id.cbL:
+                if(!checked) {
+                    repeats.add(Calendar.MONDAY);
+                }
+                else
+                    repeats.remove((Integer) Calendar.MONDAY);
+                break;
+            case R.id.cbMa:
+                if(!checked) {
+                    repeats.add(Calendar.TUESDAY);
+                }
+                else
+                    repeats.remove((Integer) Calendar.TUESDAY);
+                break;
+            case R.id.cbMe:
+                if(!checked) {
+                    repeats.add(Calendar.WEDNESDAY);
+                }
+                else
+                    repeats.remove((Integer) Calendar.WEDNESDAY);
+                break;
+            case R.id.cbJ:
+                if(!checked) {
+                    repeats.add(Calendar.THURSDAY);
+                }
+                else
+                    repeats.remove((Integer) Calendar.THURSDAY);
+                break;
+            case R.id.cbV:
+                if(!checked) {
+                    repeats.add(Calendar.FRIDAY);
+                }
+                else
+                    repeats.remove((Integer) Calendar.FRIDAY);
+                break;
+            case R.id.cbS:
+                if(!checked) {
+                    repeats.add(Calendar.SATURDAY);
+                }
+                else
+                    repeats.remove((Integer) Calendar.SATURDAY);
+                break;
+            case R.id.cbD:
+                if(!checked) {
+                    repeats.add(Calendar.SUNDAY);
+                }
+                else
+                    repeats.remove((Integer) Calendar.SUNDAY);
+                break;
+        }
     }
 }

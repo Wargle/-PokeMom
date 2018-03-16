@@ -67,7 +67,7 @@ public class AlarmActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onStop() {
         SharedPreferences prefs = getSharedPreferences(SH_PREF, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         Gson gson = new Gson();
@@ -79,7 +79,7 @@ public class AlarmActivity extends AppCompatActivity {
         }
         editor.apply();
 
-        super.onDestroy();
+        super.onStop();
     }
 
     @Override

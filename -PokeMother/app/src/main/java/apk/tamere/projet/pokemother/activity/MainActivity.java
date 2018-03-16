@@ -67,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
         conv.setLayoutManager(layoutManager);
         conv.setAdapter(adapter);
 
-        adapter.add(new Message(getString(R.string.momHello), true));
-
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -78,17 +76,20 @@ public class MainActivity extends AppCompatActivity {
                 ((DrawerLayout) findViewById(R.id.mainActivity)).closeDrawers();
 
                 switch (menuItem.getItemId()){
+                    case R.id.nav_contact:
+                        Toast.makeText(getApplicationContext(), R.string.toast_contact, Toast.LENGTH_SHORT).show();
+                        return true;
                     case R.id.nav_meteo:
                         Toast.makeText(getApplicationContext(), R.string.toast_meteo, Toast.LENGTH_SHORT).show();
+
+                        Intent intentMeteo = new Intent(getApplicationContext(), WeatherActivity.class);
+                        startActivity(intentMeteo);
                         return true;
                     case R.id.nav_alarme:
                         Toast.makeText(getApplicationContext(), R.string.toast_alarme, Toast.LENGTH_SHORT).show();
 
                         Intent intentAlarm = new Intent(getApplicationContext(), AlarmActivity.class);
                         startActivity(intentAlarm);
-                        return true;
-                    case R.id.nav_dress:
-                        Toast.makeText(getApplicationContext(), R.string.toast_dress, Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.nav_diet:
                         Toast.makeText(getApplicationContext(), R.string.toast_food, Toast.LENGTH_SHORT).show();

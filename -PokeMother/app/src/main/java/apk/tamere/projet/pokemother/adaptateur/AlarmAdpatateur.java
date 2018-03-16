@@ -1,5 +1,6 @@
 package apk.tamere.projet.pokemother.adaptateur;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ToggleButton;
 
 import java.util.List;
 
+import apk.tamere.projet.pokemother.App;
 import apk.tamere.projet.pokemother.R;
 import apk.tamere.projet.pokemother.metier.Alarm;
 import apk.tamere.projet.pokemother.metier.Message;
@@ -39,12 +41,13 @@ public class AlarmAdpatateur extends AbstractAdaptateur<Alarm> {
 
         aHolder.time.setText(current.getTime());
         aHolder.date.setText(current.getDate());
+        aHolder.repeat.setText(App.getContext().getString(R.string.alarm_text_repeat) + " " + current.getRepeatsText());
         aHolder.active.setChecked(current.isActive());
     }
 
     public class AlarmViewHolder extends AbstractAdaptateur.ViewHolder {
 
-        private TextView date, time;
+        private TextView date, time, repeat;
         private ToggleButton active;
         private Button bSuppr;
 
@@ -53,6 +56,8 @@ public class AlarmAdpatateur extends AbstractAdaptateur<Alarm> {
 
             date = v.findViewById(R.id.alarm_date);
             time = v.findViewById(R.id.alarm_time);
+            repeat = v.findViewById(R.id.alarm_repeat);
+
             active = v.findViewById(R.id.tB_ring);
             bSuppr = v.findViewById(R.id.b_supprAlarm);
 

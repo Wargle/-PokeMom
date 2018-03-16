@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_geolocation_enabled">geolocation_enabled</string>
+    <string name="pref_cached_location">cached_location</string>
+    <string name="pref_temperature_unit">temperature_unit</string>
+</resources>

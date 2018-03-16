@@ -34,6 +34,19 @@
         android:textColor="@color/colorGray"
         android:textSize="12sp" />
 
+    <TextView
+        android:id="@+id/alarm_repeat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/alarm_date"
+        android:layout_toEndOf="@+id/b_supprAlarm"
+        android:layout_toRightOf="@+id/b_supprAlarm"
+        android:minWidth="200dp"
+        android:textColor="@color/colorGray"
+        android:textSize="12sp"
+        android:layout_marginTop="10dp"
+        android:text="@string/alarm_text_repeat"/>
+
     <ToggleButton
         android:id="@+id/tB_ring"
         style="@style/Widget.AppCompat.DrawerArrowToggle"

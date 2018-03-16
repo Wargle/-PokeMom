@@ -4,75 +4,156 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.AlarmAddActivity"
-    android:padding="10dp">
+    android:padding="25dp">
 
-    <!--EditText
-        android:id="@+id/in_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/btn_date"
-        android:layout_toStartOf="@+id/btn_date"
-        android:inputType="date" />
-
-    <Button
-        android:id="@+id/btn_date"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/text_select_date" />
-
-    <EditText
-        android:id="@+id/in_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/btn_time"
-        android:layout_toLeftOf="@+id/btn_time"
-        android:layout_toStartOf="@+id/btn_time"
-        android:inputType="time" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_select_time"
-        android:id="@+id/btn_time"
-        android:layout_below="@+id/btn_date"
-        android:layout_alignLeft="@+id/btn_date"
-        android:layout_alignStart="@+id/btn_date" />
-
-    <Button
-        android:id="@+id/start_alarm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/alarm_clock_margin"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/alarm_text_set" /-->
+        android:layout_above="@+id/newDateDay"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:minHeight="32dp"
+        android:minWidth="32dp"
+        android:id="@+id/newIcon"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_menu_alarme"/>
 
     <TextView
         android:id="@+id/newDateHour"
-        android:hint="@string/alarm_text_hint"
-        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="32dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/colorBlack" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@+id/newIcon"
+        android:layout_toRightOf="@+id/newIcon"
+        android:hint="@string/alarm_text_hint"
+        android:textColor="@color/colorBlack"
+        android:textSize="32sp" />
 
     <TextView
         android:id="@+id/newDateDay"
-        android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/newDateHour"
+        android:layout_toEndOf="@+id/newIcon"
+        android:layout_toRightOf="@+id/newIcon" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="63dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp"
-        android:layout_below="@+id/newDateHour" />
+        android:layout_below="@+id/newDateHour"
+        android:minHeight="32dp"
+        android:minWidth="32dp"
+        android:src="@drawable/ic_day_black_24dp"
+        android:id="@+id/newDays" />
+
+    <CheckBox
+        android:id="@+id/cbL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/newDays"
+        android:layout_toEndOf="@+id/newIcon"
+        android:layout_toRightOf="@+id/newIcon"
+        android:background="@drawable/style_rb"
+        android:button="@null"
+        android:checked="true"
+        android:gravity="center"
+        android:onClick="onCheckboxClicked"
+        android:text="@string/cbTextL" />
+
+    <CheckBox
+        android:onClick="onCheckboxClicked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cbL"
+        android:layout_alignBottom="@+id/cbL"
+        android:layout_toEndOf="@+id/cbL"
+        android:layout_toRightOf="@+id/cbL"
+        android:background="@drawable/style_rb"
+        android:button="@null"
+        android:checked="true"
+        android:gravity="center"
+        android:text="@string/cbTextMa"
+        android:id="@+id/cbMa" />
+
+    <CheckBox
+        android:onClick="onCheckboxClicked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cbMa"
+        android:layout_alignBottom="@+id/cbMa"
+        android:layout_toEndOf="@+id/cbMa"
+        android:layout_toRightOf="@+id/cbMa"
+        android:background="@drawable/style_rb"
+        android:button="@null"
+        android:checked="true"
+        android:gravity="center"
+        android:text="@string/cbTextMe"
+        android:id="@+id/cbMe" />
+
+    <CheckBox
+        android:onClick="onCheckboxClicked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cbMe"
+        android:layout_alignBottom="@+id/cbMe"
+        android:layout_toEndOf="@+id/cbMe"
+        android:layout_toRightOf="@+id/cbMe"
+        android:background="@drawable/style_rb"
+        android:button="@null"
+        android:checked="true"
+        android:gravity="center"
+        android:text="@string/cbTextJ"
+        android:id="@+id/cbJ" />
+
+    <CheckBox
+        android:onClick="onCheckboxClicked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cbJ"
+        android:layout_alignBottom="@+id/cbJ"
+        android:layout_toEndOf="@+id/cbJ"
+        android:layout_toRightOf="@+id/cbJ"
+        android:background="@drawable/style_rb"
+        android:button="@null"
+        android:checked="true"
+        android:gravity="center"
+        android:text="@string/cbTextV"
+        android:id="@+id/cbV" />
+
+    <CheckBox
+        android:onClick="onCheckboxClicked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cbV"
+        android:layout_alignBottom="@+id/cbV"
+        android:layout_toEndOf="@+id/cbV"
+        android:layout_toRightOf="@+id/cbV"
+        android:background="@drawable/style_rb"
+        android:button="@null"
+        android:checked="true"
+        android:gravity="center"
+        android:text="@string/cbTextS"
+        android:id="@+id/cbS"/>
+
+    <CheckBox
+        android:onClick="onCheckboxClicked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cbS"
+        android:layout_alignBottom="@+id/cbS"
+        android:layout_toEndOf="@+id/cbS"
+        android:layout_toRightOf="@+id/cbS"
+        android:background="@drawable/style_rb"
+        android:button="@null"
+        android:checked="true"
+        android:gravity="center"
+        android:text="@string/cbTextD"
+        android:id="@+id/cbD"/>
 
     <Button
         android:id="@+id/start_alarm"

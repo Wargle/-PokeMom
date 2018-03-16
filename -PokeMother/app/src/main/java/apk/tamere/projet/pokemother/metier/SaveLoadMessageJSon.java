@@ -24,11 +24,11 @@ public class SaveLoadMessageJSon implements ISaveLoad<Message> {
         try {
             Gson gson = new Gson();
             file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), path);
-            int start = o.size() - 23;
-            if (start < 0) start = 0;
+            int fin = 23;
+            if (fin > o.size()) fin = o.size();
 
             writer = new FileWriter(file);
-            writer.write(gson.toJson(o.subList(start, o.size())));
+            writer.write(gson.toJson(o.subList(0, fin)));
             writer.close();
 
         }

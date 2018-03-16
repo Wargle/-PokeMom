@@ -1,21 +1,26 @@
 <resources xmlns:xliff="http://schemas.android.com/tools">
     <string name="app_name">PokeMom</string>
 
-    <string name="sliding_title">Titre</string>
-    <string name="sliding_header_text">Text. Text ? Text !</string>
+    <string name="utils_none">aucune</string>
+
+    <string name="no_connection">Pas de connexion internet…</string>
+
+    <string name="sliding_title">PokeMom</string>
+    <string name="sliding_header_text">On a finalement compilé ta mère !</string>
     <string name="sliding_menu_sub">Additionnel</string>
     <string name="sliding_menuB_meteo">Météo</string>
     <string name="sliding_menuB_alarme">Réveil</string>
     <string name="sliding_menuB_dress">Dressing</string>
     <string name="sliding_menuB_diet">Régime</string>
     <string name="sliding_menuB_best">La meilleur fonction</string>
+    <string name="sliding_menuB_contact">Contact</string>
 
     <string name="toast_meteo">Pense à te couvrir.</string>
     <string name="toast_alarme">À quelle heure ?</string>
-    <string name="toast_dress">Tu sors comme ça ?</string>
     <string name="toast_food">On mange !!</string>
     <string name="toast_best">Bien, bien.</string>
     <string name="toast_smth_wrong">Quelquechose ne va pas !</string>
+    <string name="toast_contact">Je peux t\'aider ?</string>
 
     <string name="text_send">Envoyer</string>
 
@@ -43,12 +48,20 @@
     <string name="alarm_text_set">Tu sonneras !</string>
     <string name="alarm_text_stop">Arrête toi !</string>
     <string name="alarm_text_mess">Selectionner</string>
-    <string name="alarm_text_hint">appuyez...</string>
+    <string name="alarm_text_hint">Appuyez…</string>
     <string name="bSuppr">X</string>
     <string name="text_select_date">Date</string>
     <string name="text_select_time">Heure</string>
     <string name="text_diff">Difficulté :</string>
     <string name="momHello">Bonjour ! &lt;3</string>
+    <string name="cbTextL">L</string>
+    <string name="cbTextMa">Ma</string>
+    <string name="cbTextMe">Me</string>
+    <string name="cbTextJ">J</string>
+    <string name="cbTextV">V</string>
+    <string name="cbTextS">S</string>
+    <string name="cbTextD">D</string>
+    <string name="alarm_text_repeat">Répétitions :</string>
 
     <string-array name="cb_diet">
         <item>Très facile</item>
@@ -63,4 +76,26 @@
         <item>D\'accord !</item>
         <item>On voit ça demain</item>
     </string-array>
+
+    <string name="temperature">Température</string>
+    <string name="condition">Temps</string>
+    <string name="location">Localisation</string>
+    <string name="loading">Chargement&#8230;</string>
+    <string name="format_temperature_output">%1$d&#176;%2$s</string>
+    <string name="update_location">Mise à jour de la localisation</string>
+    <string name="cache_exception">Aucune données en cache</string>
+    <string name="location_permission_needed">L\'accès à la Géolocalisation est requis</string>
+    <string name="day">Jour</string>
+    <string name="high">Haut</string>
+    <string name="low">Bas</string>
+    <string name="weather_b_find">Trouve moi !</string>
+    <string name="weather_info_mom">Message de maman</string>
+
+    <string name="weather_info_cloud">Met un pull</string>
+    <string name="weather_info_moon">Tu sorts à cette heure ?</string>
+    <string name="weather_info_rain">Tu devrais mettre un cahouet</string>
+    <string name="weather_info_snow">Pense à mettre un bonnet et des gants</string>
+    <string name="weather_info_storm"></string>
+    <string name="weather_info_sun">Met une casquette</string>
+    <string name="weather_info_wind"></string>
 </resources>
